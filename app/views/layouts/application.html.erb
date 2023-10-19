@@ -11,31 +11,48 @@
   </head>
 
   <body>
-     <header>
-      <% if user_signed_in? %>
+    <header>
+      <% if admin_signed_in? %>
         <li>
-          <%= "About" %>
+          <%= link_to "商品一覧", admin_items_path %>
         </li>
         <li>
-          <%= "商品一覧" %>
+          <%= link_to "会員一覧", admin_customer_path %>
         </li>
         <li>
-          <%= "新規登録" %>
+          <%= link_to "注文履歴一覧", admin_orders_show_path %>
         </li>
         <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+        </li>
+      <% elsif customer_signed_in? %>
+        <li>
+          <%= link_to "マイページ", customer_path %>
+        </li>
+        <li>
+          <%= link_to "商品一覧", items_path %>
+        </li>
+        <li>
+          <%= link_to "カート", cart_items_index_path %>
+        </li>
+        <li>
+          <%= link_to "ログアウト", destroy_customers_session_path, method: :delete %>
         </li>
       <% else %>
-        
-        
         <li>
-          <%= link_to "新規登録", new_user_registration_path %>
+          <%= link_to "About", about_path %>
         </li>
         <li>
-          <%= link_to "ログイン", new_user_session_path %>
+          <%= link_to "商品一覧", items_path %>
+        </li>
+        <li>
+          <%= link_to "新規登録", new_customer_registration_path %>
+        </li>
+        <li>
+          <%= link_to "ログイン", new_customer_session_path %>
         </li>
       <% end %>
-  </header>
+    </header>
     
     
     <%= yield %>
