@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :index, :show]
     post 'orders/confilm'
     get 'orders/complete'
-    resources :customers, only: [:show, :edit]
+    resources :customers, only: [:edit]
+    get 'customers/show' => 'customers#show', as: 'my_page'
     get 'cuttomers/confilm'
     resources :items, only: [:index, :show]
   end
