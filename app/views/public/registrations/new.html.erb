@@ -61,8 +61,12 @@
           <%= f.submit "新規会員登録" %>
         </div>
       <% end %>
+      
+      <h1>既に登録済みの方</h1>
+      <p><%= link_to 'こちら', new_customer_session_path %>からログインしてください</p>
+      
     </div>
   </div>
 </div>
 
-<%= render "public/shared/links" %>
+

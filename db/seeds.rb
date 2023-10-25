@@ -12,3 +12,16 @@ Admin.create!(
   password: 'mikumikumikuku'
 )
 
+
+Customer.create!(
+  email:"aaa@gmail.com",
+  password:"aaaaaa",
+  first_name:"aaaa",
+  last_name:"aaaaa",
+  first_name_kana:"aaaa",
+  last_name_kana:"aaaaaa",
+  postal_code:"aaaaa",
+  address:"aaaaaaa",
+  telephone_number:"aaaaa"
+);
+

@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :index, :show]
     post 'orders/confilm'
     get 'orders/complete'
-    resources :customers, only: [:edit]
+    #resources :customers, only: [:edit]
+    get 'customers/edit' => 'customers#edit', as: 'customers/information/edit'
     get 'customers/show' => 'customers#show', as: 'my_page'
     get 'cuttomers/confilm'
     resources :items, only: [:index, :show]
@@ -30,6 +31,6 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
   
-  devise_for :users
+  # devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

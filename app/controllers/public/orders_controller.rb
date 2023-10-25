@@ -1,9 +1,10 @@
 class Public::OrdersController < ApplicationController
+  
   def new
   end
   
   def confilm
-    
+  end
   
   def complete
   end
@@ -12,5 +13,6 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    
   end
 end

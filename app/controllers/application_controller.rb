@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_any!
+  #before_action :authenticate_any!
     
   def authenticate_any!
     if request.path.match(/\/admin(\/)?/) # url判定(urlにadminを含んでいるか)
