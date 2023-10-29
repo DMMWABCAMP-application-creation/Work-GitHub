@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'orders/show'
     resources :customers, only: [:index, :show, :edit]
-    resources :items, only: [:index, :new, :show, :edit]
+    resources :items, only: [:index, :new, :create, :show, :edit]
   end
   
   scope module: :public do
@@ -14,10 +14,12 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :index, :show]
     post 'orders/confilm'
     get 'orders/complete'
-    #resources :customers, only: [:edit]
+    patch 'customers/quit'
+    resources :customers, only: [:edit, :update]
     get 'customers/edit' => 'customers#edit', as: 'customers/information/edit'
     get 'customers/show' => 'customers#show', as: 'my_page'
-    get 'cuttomers/confilm'
+    get 'customers/confilm'
+    
     resources :items, only: [:index, :show]
   end
   
