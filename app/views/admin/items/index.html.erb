@@ -1,10 +1,29 @@
-<h1>商品一覧</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>商品一覧</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜き価格</th>
+          </tr>
+        </thead>
+        <% @items.each do |item| %>
+        <tbody>
+          <tr>
+            <td><%= item.id %></td>
+            <td><%= link_to item.name, admin_item_path(item.id) %></td>
+            <td><%= item.price %></td>
+          </tr>
+        </tbody>
+        <%  end %>
+      </table>
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>
 
-
-<% @items.each do |item| %>
-  <p><%= item.name %></p>
-  <p><%= item.price %></p>
-  <p><%= item.add_tax_price %></p>
-<% end %>
 
 

@@ -1,1 +1,17 @@
-<h1>public-items-show</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <%= image_tag @item.image, size: "200x200" %>
+    </div>
+    <div class="col-5">
+      <%= @item.name %>
+      <%= @item.introduction %>
+      <%= @item.add_tax_price.to_s(:delimited) %>
+      <%= link_to "カートに入れる", cart_items_path, class:' btn btn-success' %>
+    </div>
+  </div>
+</div>
+
+
+
+
