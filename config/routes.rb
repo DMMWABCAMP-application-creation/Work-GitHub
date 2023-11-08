@@ -3,14 +3,16 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     get 'orders/show'
-    resources :customers, only: [:index, :show, :edit]
+    resources :customers, only: [:index, :show, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
   
   scope module: :public do
     root to: "homes#top"
     get 'home/about' => 'homes#about', as: 'about'
-    resources :cart_items, only: [:index]
+    resources :cart_items, only: [:index, :create, :edit, :update]
+    delete 'cart_items/destroy'
+    delete 'cart_items/destroy_all'
     resources :orders, only: [:new, :index, :show]
     post 'orders/confilm'
     get 'orders/complete'
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
     get 'customers/show' => 'customers#show', as: 'my_page'
     get 'customers/confilm'
     
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show, :create]
   end
   
   
