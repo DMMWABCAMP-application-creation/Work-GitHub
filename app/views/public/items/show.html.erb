@@ -8,7 +8,7 @@
       <%= @item.introduction %>
       <%= @item.add_tax_price.to_s(:delimited) %>
       
-      <%= form_with model: @cart_item, url:items_path, local:true do |f| %>
+      <%= form_with model: @cart_item, local:true do |f| %>
         <%= f.hidden_field :item_id, :value => @item.id %>
         <%= f.select :amount, *[1..10] %>
         <%= f.submit 'カートに入れる' %>

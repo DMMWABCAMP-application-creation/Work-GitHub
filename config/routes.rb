@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get 'home/about' => 'homes#about', as: 'about'
-    resources :cart_items, only: [:index, :create, :edit, :update]
-    delete 'cart_items/destroy'
     delete 'cart_items/destroy_all'
+    resources :cart_items, only: [:index, :create, :edit, :update, :destroy]
+    # delete 'cart_items/destroy'
     resources :orders, only: [:new, :index, :show]
     post 'orders/confilm'
     get 'orders/complete'

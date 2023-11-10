@@ -29,7 +29,7 @@
                 　<% end %>
             </td>
             <td><%= cart_item.subtotal %></td>
-            <td><%= button_to "削除", cart_items_destroy_path(cart_item.item.id), method: :delete, class:"btn btn-danger" %></td>
+            <td><%= button_to "削除", cart_item_path(cart_item.id), method: :delete, class:"btn btn-danger" %></td>
             <% @total += cart_item.subtotal  %>
           </tr>
         </tbody>
