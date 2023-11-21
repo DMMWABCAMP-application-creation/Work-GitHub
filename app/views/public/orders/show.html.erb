@@ -1,23 +1,75 @@
 <h1>注文履歴詳細</h1>
 
-<div>
-  <h3>購入者</h3>
-  <p><%= @order.name %></p>
-  <h3>注文日</h3>
-  <p><%= @order.created_at %></p>
-  <h3>配送先</h3>
-  <p><%= @order.address %></p>
-  <h3>支払方法</h3>
-  <p><%= @order.payment_method_i18n %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-7">
+      <div>
+        <h3>注文情報</h3>
+          <table class="table table-bordered">
+            <tr>
+              <td>注文日</td>
+              <td><%= @order.created_at %></td>
+            </tr>
+            <tr>
+              <td>配送先</td>
+              <td><%= @order.address %></td>
+            </tr>
+            <tr>
+              <td>支払方法</td>
+              <td><%= @order.payment_method_i18n %></td>
+            </tr>
+          </table>
+      </div>
+    </div>
+    <div class="col-5">
+      <div>
+        <h3>請求情報</h3>
+          <table class="table table-bordered">
+            <tr>
+              <td>商品合計</td>
+              <td> <%= @order.billed_amount %></td>
+            </tr>
+            <tr>
+              <td>配送料</td>
+              <td>800</td>
+            </tr>
+            <tr>
+              <td>ご請求金額</td>
+              <td><%= @order.billed_amount + 800 %></td>
+            </tr>
+          </table>
+      </div>
+    </div>
+  </div>
 </div>
 
-<% @order_item.each do |order_item|%>
-  <%= order_item %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div>
+        <h3>注文内容</h3>
+          <table class="table table-bordered">
+            <tr>
+              <th>商品</th>
+              <th>単価(税込み)</th>
+              <th>個数</th>
+              <th>小計</th>
+            </tr>
+            <% @order.order_items.each do |order| %>
+            <tr>
+              <td><%= order.item.name %></td>
+              <td><%= order.price %></td>
+              <td><%= order.amount %></td>
+              <td><%= order.subtotal %></td>
+            </tr>
+            <% end %>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>
 
-   <%= link_to order_item.updated_at, order_path(order_item.id) %>
-   <%= order_item.order.name %>
-   <%= order_item.price %>
- <% end %>
+
 
 
 

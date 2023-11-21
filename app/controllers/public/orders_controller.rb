@@ -16,13 +16,11 @@ class Public::OrdersController < ApplicationController
       @order_item.item_id = cart_item.item.id
       @order_item.price = cart_item.item.add_tax_price
       @order_item.amount = cart_item.amount
-      
       @order_item.save!
     end
     
     CartItem.destroy_all
     redirect_to orders_complete_path
-    
   end
   
   def confilm
@@ -30,17 +28,18 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.postal_code = current_customer.postal_code
     @order.name = current_customer.last_name + current_customer.first_name
+    @order.address = current_customer.address
   end
   
   def complete
   end
 
   def index
+    @orders = current_customer.orders
   end
 
   def show
-    @order = Order.find(params[:id])
-    @order_item = OrderItem.find(params[:id])
+    @order = current_customer.orders.find(params[:id])
   end
   
   
@@ -54,7 +53,5 @@ class Public::OrdersController < ApplicationController
     params.require(:order).permit(:payment_method, :customer_id, :postage, :postal_code, :billed_amount, :address, :name)
   end
   
-  
-  
-  
+
 end

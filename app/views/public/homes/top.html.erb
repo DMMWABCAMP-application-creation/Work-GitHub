@@ -6,18 +6,21 @@
       <p>会員でない方も商品の閲覧は出来ますが、</p>
       <p>購入には会員登録が必要となります。</p>
     </div>
-    
-    <div class="center-block">
-      <h2>新着商品</h2>
-        <% @items.each do |item| %>
+  </div>
+  
+  <div class="row">
+    <h2>新着商品</h2>
+    <div class="col d-flex p-2">
+      <% @items.each do |item| %>
+        <%= link_to(item_path(item)) do %>
           <%= image_tag item.image, size: "200x200" %>
-          <%= item.name %>
-          <%= item.price %>
         <% end %>
+        <br><%= item.name %></br>
+        <br><%= item.price %></p>
+      <% end %>
     </div>
   </div>
 </div>
-
 
 
 
