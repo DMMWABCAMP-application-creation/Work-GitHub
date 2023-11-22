@@ -2,6 +2,7 @@ class Public::CartItemsController < ApplicationController
   def index
     @cart_items = current_customer.cart_items
     @total = 0
+    # @flag = cart_empty(@cart_items)
   end
   
   def create
@@ -41,5 +42,8 @@ class Public::CartItemsController < ApplicationController
     params.require(:cart_item).permit(:item_id, :amount)
   end
   
+  # def cart_empty(cart_items)
+  #   cart_items.count == 0
+  # end
   
 end
