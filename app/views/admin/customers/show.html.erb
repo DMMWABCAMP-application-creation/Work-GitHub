@@ -32,6 +32,18 @@
             <td>メールアドレス</td>
             <td><%= @customer.email %></td>
           </tr>
+          <tr>
+            <td>会員ステータス</td>
+            <td>
+              <% if @customer.active? %>
+                有効
+              <% else %>
+                退会
+              <% end %>
+            </td>
+          </tr>
+          
+          
         </tbody>
       </table>
       

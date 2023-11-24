@@ -27,7 +27,12 @@
           <table class="table table-bordered">
             <tr>
               <td>商品合計</td>
-              <td> <%= @order.billed_amount %></td>
+              <td>
+                <% @order_items.each do |order_item| %>
+                  <% @total += order_item.subtotal  %>
+                <% end %>
+                <%= @total %>
+              </td>
             </tr>
             <tr>
               <td>配送料</td>
@@ -68,7 +73,6 @@
     </div>
   </div>
 </div>
-
 
 
 

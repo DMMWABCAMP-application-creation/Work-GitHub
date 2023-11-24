@@ -16,6 +16,22 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <h1 class="text-left">ロゴ</h1>
+          
+          <nav class="navbar navbar-expand-lg navbar-light justify-content-center">
+            <span class="navbar-text">
+               <div>
+                <% if customer_signed_in? %>
+                  <p>ようこそ、<%= current_customer.last_name %>さん！</p>
+                <% else %>
+    
+                <% end %>
+              </div>
+            </span>
+          </nav>
+          
+          
+             
+          
           <ul class="navbar-nav ml-auto">
             <% if admin_signed_in? %>
               <button type="button" class="btn btn-light">
