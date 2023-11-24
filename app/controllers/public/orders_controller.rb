@@ -26,6 +26,7 @@ class Public::OrdersController < ApplicationController
   
   def confilm
     @cart_items = current_customer.cart_items
+    @total = 0
     @order = Order.new(order_params)
     @order.postal_code = current_customer.postal_code
     @order.name = current_customer.last_name + current_customer.first_name

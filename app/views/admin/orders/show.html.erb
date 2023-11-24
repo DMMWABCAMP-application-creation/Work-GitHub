@@ -2,13 +2,13 @@
 
 <div>
   <h3>購入者</h3>
-  <p><%= @order_item.order.name %></p>
+  <p><%= @order.name %></p>
   <h3>注文日</h3>
-  <p><%= @order_item.created_at %></p>
+  <p><%= @order.created_at %></p>
   <h3>配送先</h3>
-  <p><%= @order_item.order.address %></p>
+  <p><%= @order.address %></p>
   <h3>支払方法</h3>
-  <p><%= @order_item.order.payment_method_i18n %></p>
+  <p><%= @order.payment_method_i18n %></p>
 </div>
 
 <div class="container">
@@ -35,7 +35,12 @@
       <table>
         <tr>
           <td>商品合計</td>
-          <td><%= @order_item.order.billed_amount %>円</td>
+          <td>
+            <% @order_items.each do |order_item| %>
+              <% @total += order_item.subtotal  %>
+            <% end %>
+            <%= @total %>円
+          </td>
         </tr>
         <tr>
           <td>送料</td>
@@ -43,7 +48,7 @@
         </tr>
         <tr>
           <td>請求金額合計</td>
-          <td><%= @order_item.order.billed_amount + 800 %>円</td>
+          <td><%= @total + 800 %>円</td>
         </tr>
       </table>
     </div>

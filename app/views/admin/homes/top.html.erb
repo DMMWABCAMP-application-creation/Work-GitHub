@@ -10,11 +10,16 @@
             <th>購入者</th>
             <th>注文個数</th>
           </tr>
-          <% @order_item.each do |order_item|%>
+          
+          <% @order_page.each do |order|%>
+          <% sum = 0 %>
+          <% order.order_items.each do |order_item| %>
+            <% sum += order_item.amount %>
+          <% end %>
           <tr>
-            <td><%= link_to order_item.updated_at, admin_order_path(order_item.id) %></td>
-            <td><%= order_item.order.name %></td>
-            <td><%= order_item.amount %></td>
+            <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
+            <td><%= order.name %></td>
+            <td><%= sum %></td>
           </tr>
           <% end %>
         </table>
