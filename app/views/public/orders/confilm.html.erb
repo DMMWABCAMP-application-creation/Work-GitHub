@@ -47,14 +47,7 @@
         </tr>
       </table>
     </div>
-    
-   
-    
-    
   </div>
-  
-  
-  
   
   <div class="row">
     <div class="col">
@@ -65,7 +58,11 @@
   <div class="row">
     <div class="col">
       <h3>お届け先</h3>
-       <%= @order.address %>
+       <p><%= @order.address %></p>
+       <p>
+         <%= @customer.last_name %>
+         <%= @customer.first_name %>
+        </p>
     </div>
   </div>
   

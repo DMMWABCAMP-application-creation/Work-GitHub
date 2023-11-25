@@ -26,6 +26,7 @@ class Public::OrdersController < ApplicationController
   
   def confilm
     @cart_items = current_customer.cart_items
+    @customer = current_customer
     @total = 0
     @order = Order.new(order_params)
     @order.postal_code = current_customer.postal_code
@@ -38,13 +39,13 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders
+    
     @total = 0
+    
   end
 
   def show
     @order = current_customer.orders.find(params[:id])
-    
-    @order_items = @order.order_items
     @total = 0
   end
   

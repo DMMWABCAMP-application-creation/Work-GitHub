@@ -17,18 +17,17 @@
             <td>
               <% order.order_items.each do |order_item| %>
                 <p><%= order_item.item.name %></p>
+                <% @total += order_item.subtotal %>
               <% end %>
             </td>
             <td>
-              <% @orders.each do |order| %>
-                <% @total += order.order_item.subtotal %>
-              <% end %>
+              
               <%= @total %>円
             </td>
+            
             <td><%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %></td>
           </tr>
           <% end %>
         </table>
-
 
 
